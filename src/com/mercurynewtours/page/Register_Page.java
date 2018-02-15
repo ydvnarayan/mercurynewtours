@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.Reporter;
 
-public class register_page {
+public class Register_Page {
 @FindBy(xpath="//td[.='REGISTER']")
  private WebElement register;
 	 
@@ -48,80 +51,62 @@ public class register_page {
  @FindBy(name="register")
  private WebElement submit;
  
- public register_page(WebDriver driver)
+ @FindBy(xpath="//font[contains(.,' Dear Opesydra Uhet')]")
+ private WebElement afterregister;
+ 
+ public Register_Page(WebDriver driver)
  {
 	 
 	 PageFactory.initElements(driver, this);
  }
- public void clickonregister()
+ public void contactInformation(String firstname,String lastname,String phone,String email)
  {
 	 register.click();
- }
- public void enterfirstname( String firstname)
- {
-	 fn.sendKeys(firstname);
- }
- public void enterlastname(String lastname)
- {
-	 ln.sendKeys(lastname);
- }
-public void enterphoneno(String phone)
- {
-	 ph.sendKeys(phone);
- }
- public void enteremail(String email)
- {
-	 eml.sendKeys(email);
+     fn.sendKeys(firstname);
+     ln.sendKeys(lastname);
+     ph.sendKeys(phone);
+     eml.sendKeys(email);
 	 
  }
- public void enteraddress(String address)
+ public void mailingInformation(String address,String city,String state,String postalcode, String country )
  {
 	 add.sendKeys(address);
+     cty.sendKeys(city);
+     State.sendKeys(state);
+     Postalcode.sendKeys(postalcode);
+     Select sel= new Select(Country);
+     sel.selectByVisibleText(country);
  }
- public void entercity(String city)
- {
-	 cty.sendKeys(city);
- }
- public void enterstate(String state )
- {
-	 State.sendKeys(state);
- }
- public void enterpostalcode(String postalcode)
- {
-	 Postalcode.sendKeys(postalcode);
- }
- public void selectcounty()
- {
-	 
- }
- public void enterusername(String username)
+ public void userInformation(String username,String pwd,String confirmpwd)
  {
 	 Username.sendKeys(username);
- }
- 
- public void enterpassword(String pwd)
- {
-	 Pwd.sendKeys(pwd);
- }
- public void enterconfirmpassword(String confirmpwd)
- {
-	 Confirmpwd.sendKeys(confirmpwd);
+     Pwd.sendKeys(pwd);
+     Confirmpwd.sendKeys(confirmpwd);
  }
  public void clickonsubmitbutton()
  {
 	 submit.click();
  }
  
+ public void registrationSuccessful()
+ {
+	 boolean ar=afterregister.isDisplayed();
+	 try
+		{
+		Assert.assertTrue(ar);
+		Reporter.log("Registration successful",true);
+		}
+		catch(Exception e)
+		{
+			Reporter.log("Registration not successful",true);
+			Assert.fail();
+		}
+	 
+	  }
+	 
+	 
+	 
+ }
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
-}
 

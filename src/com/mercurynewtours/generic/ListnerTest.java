@@ -26,7 +26,6 @@ public class ListnerTest implements ITestListener{
 	public void onTestFailure(ITestResult result) {
 		try
 		{
-			String name=result.getMethod().getMethodName();
 			TakesScreenshot t=(TakesScreenshot)BaseTest.driver;
 			File src = t.getScreenshotAs(OutputType.FILE);
 			File dest = new File("./Screnshot.png");

@@ -3,12 +3,13 @@
 <suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.mercurynewtours.tests.Validsignin_Test">
+      <class name="com.mercurynewtours.tests.Signin_Test">
         <methods>
           <include name="preCondition"/>
-          <include name="userRegistration"/>
+          <include name="postCondition"/>
+          <include name="signIn"/>
         </methods>
-      </class> <!-- com.mercurynewtours.tests.Validsignin_Test -->
+      </class> <!-- com.mercurynewtours.tests.Signin_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

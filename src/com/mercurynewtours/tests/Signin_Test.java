@@ -4,23 +4,24 @@ import org.testng.annotations.Test;
 
 import com.mercurynewtours.generic.BaseTest;
 import com.mercurynewtours.generic.ExcelData;
-import com.mercurynewtours.page.signon_page;
+import com.mercurynewtours.page.Signon_Page;
 
-public class Validsignin_Test extends BaseTest{
-	@Test
-	public void userRegistration()
+public class Signin_Test extends BaseTest{
+	@Test(priority=1)
+	public void signIn() throws InterruptedException
 	{
 		String username = ExcelData.getData(path,"signin",1,1);
 		
 		String  password= ExcelData.getData(path,"signin",1,2);
-		 signon_page vs= new signon_page(driver);
+		 Signon_Page vs= new Signon_Page(driver);
 		 vs.clickonsignon();
 		 vs.username(username);
 		 vs.password(password);
 		 vs.clickonsubmit();
+		 Thread.sleep(6000);
 		 vs.flightdetailsectiondisplayed();
 		 
 		
 		
 	}
-}
+} 
